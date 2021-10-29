@@ -1,0 +1,18 @@
+{
+  "title": "",
+  "shortDescription": "test",
+  "detailedDescription": "some description",
+  "location": "some location",
+  "organisationName": "some name",
+  "organisationLogo": "some logo",
+  "documents": [
+    "document link 1",
+    "document link 2",
+    "document link 3"
+  ],
+  "images": [
+    "image link 1",
+    "image link 2",
+    "image link 3"
+  ]
+}

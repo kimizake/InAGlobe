@@ -1,0 +1,12 @@
+{
+  "title": "one document no images",
+  "shortDescription": "test",
+  "detailedDescription": "some description",
+  "location": "some location",
+  "organisationName": "some name",
+  "organisationLogo": "some logo",
+  "documents": [
+    "document link 1"
+  ],
+  "images": []
+}

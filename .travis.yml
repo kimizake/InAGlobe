@@ -1,0 +1,48 @@
+language: python
+python:
+  - '3.7'
+
+before_install:
+  - pip install -U pip
+
+install:
+  - pip install -r requirements.txt
+  - npm ci
+  - npm install -g serve
+
+cache:
+  - npm
+  - pip
+
+jobs:
+  include:
+  - stage: test
+    name: frontend tests
+    script: npm test
+
+  - script: pytest backend/
+    name:  backend tests
+
+    #   - stage: deploy_react
+    #     name: deploy_react
+    #     script: CI=false npm run build
+    #     deploy:
+    #       provider: heroku
+    #       skip_cleanup: true
+    #       app:
+    #         master: inaglobe
+    #         develop: inaglobe-dev
+    #       api_key:
+    #         secure: QrQskdv4Iw+7XJU7KYbPY759cpjuFOKkeocOSBooVr37XLUKzRJkQAIkQgAol04JBArqq13rAPIzBVRccyIROPA725+1CaREwE7UM0wNgbBEivQH8aVDkKtDZ+KvvwlV3iRDPf7WCCCaZbVcyFrxGVOqkc8lJeCDqEPrHWKHzUKW7Mouz9sybSIa7AjK6QnUczx+NZW9EzJQqBXSbdQP50iT6ybtrGtMgTkaSMzZB7WtNBFsjnSs9LOGK0NR8PnLrJQOhGWfydtMuR/B0e/jVS55ouiI6cQuANlfkeC/XjkV1r7Aw0lJErnsI3XWk+qJxB8y48TxLuVtRbIOjpXMnyshF8mWV0dhKn3KZiF0tDoDLNBw6XKMPcK+tF5tTdC1zB7MebHYuhhfedt8k74Ujunq3je1hEUXDcWW+x1/wtqQ1UAGRtpMRohv/L8z3hy1at1eZ1SLDzCxaCsPCCnEQW4MwZusHgjZ3/CUd0hOTYihdGRp2sgKnKkrH+2+4DbZ+s7cjRDyiBiliTHL4fQQ95ZnoI4dLrGiqEUBJCPsc8CueFNjj92b+75N2X8jQTO6+yJU7MDcSVY0kksPSAhKCFioRZU/Cb7bqmyJ0Fxwtm19VR0elWq23eMtSqPO9vqE3kHaexonBqKctZuPycJl9F6jKCSI7SlgWkftUcCB0Iw=
+    # 
+    #   - stage: deploy_api
+    #     script: skip
+    # 
+    #     name: deploy_api
+    # 
+    #     if: "(branch = master)"
+    #     deploy:
+    #       provider: heroku
+    #       app: inaglobe-api
+    #       api_key:
+    #         secure: QrQskdv4Iw+7XJU7KYbPY759cpjuFOKkeocOSBooVr37XLUKzRJkQAIkQgAol04JBArqq13rAPIzBVRccyIROPA725+1CaREwE7UM0wNgbBEivQH8aVDkKtDZ+KvvwlV3iRDPf7WCCCaZbVcyFrxGVOqkc8lJeCDqEPrHWKHzUKW7Mouz9sybSIa7AjK6QnUczx+NZW9EzJQqBXSbdQP50iT6ybtrGtMgTkaSMzZB7WtNBFsjnSs9LOGK0NR8PnLrJQOhGWfydtMuR/B0e/jVS55ouiI6cQuANlfkeC/XjkV1r7Aw0lJErnsI3XWk+qJxB8y48TxLuVtRbIOjpXMnyshF8mWV0dhKn3KZiF0tDoDLNBw6XKMPcK+tF5tTdC1zB7MebHYuhhfedt8k74Ujunq3je1hEUXDcWW+x1/wtqQ1UAGRtpMRohv/L8z3hy1at1eZ1SLDzCxaCsPCCnEQW4MwZusHgjZ3/CUd0hOTYihdGRp2sgKnKkrH+2+4DbZ+s7cjRDyiBiliTHL4fQQ95ZnoI4dLrGiqEUBJCPsc8CueFNjj92b+75N2X8jQTO6+yJU7MDcSVY0kksPSAhKCFioRZU/Cb7bqmyJ0Fxwtm19VR0elWq23eMtSqPO9vqE3kHaexonBqKctZuPycJl9F6jKCSI7SlgWkftUcCB0Iw=
